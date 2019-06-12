@@ -1337,7 +1337,9 @@ Class cellContVClass()
             if (label.text.length) {
                 if (!label.isAttributedContent) {
                     CGRect rect = [label.text boundingRectWithSize:CGSizeMake(label.width_sd, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : label.font} context:nil];
-                    label.height_sd = rect.size.height + 0.1;
+//                    label.height_sd = rect.size.height + 0.1;
+                    /// 休闲细线问题, 向上取整
+                    label.height_sd = ceil(rect.size.height + 0.1);
                 } else {
                     [label sizeToFit];
                     if (label.sd_maxWidth && label.width_sd > [label.sd_maxWidth floatValue]) {
